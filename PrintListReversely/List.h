@@ -8,9 +8,11 @@
 struct ListNode;
 typedef ListNode *Node;
 
+Node CreateNode( int value );
 void AddToTail( Node* pHead, int value );
 void RemoveNode( Node* pHead, int value );
-void PrintReversely( Node* pHead );
+void PrintReversinglyRecursively( const Node Head );
+void PrintReversinglyIteratively( const Node Head );
 
 struct ListNode{
     int m_nKey;

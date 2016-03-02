@@ -3,7 +3,23 @@
 //
 
 #include <iostream>
+#include <stack>
 #include "List.h"
+
+using namespace std;
+
+Node CreateNode( int value )
+{
+    Node node = new ListNode();
+    if ( node == NULL )
+        return NULL;
+    else
+    {
+        node->m_nKey = value;
+        node->m_pNext = NULL;
+        return node;
+    }
+}
 
 void AddToTail( Node* pHead, int value )
 {
@@ -11,7 +27,7 @@ void AddToTail( Node* pHead, int value )
     tempNode->m_nKey = value;
     tempNode->m_pNext = NULL;
 
-    if ( pHead == NULL )
+    if ( *pHead == NULL )
     {
         *pHead = tempNode;
     }
@@ -55,21 +71,35 @@ void RemoveNode( Node* pHead, int value )
         delete ToBeDeleted;
 }
 
-static void PrintRecursly( const Node list )
+void PrintReversinglyRecursively( const Node Head )
 {
-    if ( list == NULL )
+    if ( Head == NULL )
         return;
-    PrintRecursly( list->m_pNext );
-    cout << list->m_nKey << endl;
+    PrintReversinglyRecursively( Head->m_pNext );
+    cout << Head->m_nKey << endl;
 }
 
-void PrintReversely( Node* pHead )
+void PrintReversinglyIteratively( const Node Head )
 {
-    if ( pHead == NULL )
+    if ( Head == NULL )
         return;
-    PrintRecursly( *pHead );
-}
 
+    stack<Node> nodes;
+    Node iter = Head;
+    do
+    {
+        nodes.push(iter);
+        iter = iter->m_pNext;
+    }while( iter != NULL );
+
+    while( !nodes.empty() )
+    {
+        iter = nodes.top();
+        cout << iter->m_nKey << '\t';
+        nodes.pop();
+    }
+    cout << endl;
+}
 
 
 
