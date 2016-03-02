@@ -8,26 +8,29 @@
 
 CMyString::CMyString( char* pData )
 {
-    m_pData = pData;
+    if ( pData == NULL )
+    {
+        m_pData = new char[1];
+        m_pData[0] = '\0';
+    }
+    else
+    {
+        int len = strlen( pData );
+        m_pData = new char[len + 1];
+        strcpy( m_pData, pData );
+    }
 }
 
 CMyString::CMyString(const CMyString &str)
 {
-    if ( this != &str )
-    {
-        int _cnt = strlen( str.m_pData );
-        char *temp = (char *) malloc( _cnt * sizeof(char) + 1 );
-
-        for ( int i = 0; i <= _cnt; ++i )
-            temp[i] = str.m_pData[i];
-
-        m_pData = temp;
-    }
+    int len = strlen( str.m_pData );
+    m_pData = new char[len + 1];
+    strcpy( m_pData, str.m_pData );
 }
 
 CMyString::~CMyString()
 {
-    delete []m_pData;
+    delete[] m_pData;
 }
 
 CMyString& CMyString::operator=( const CMyString& str )
