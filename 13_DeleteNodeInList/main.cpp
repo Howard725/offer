@@ -80,6 +80,16 @@ int main() {
     DeleteNode( &node1, node3 );
     print( &node1 );
 
+    try {
+        DeleteNode( &node1, node1 );
+        print( &node1 );
+    }
+    catch( const char* ex)
+    {
+        cout << ex << endl;
+    }
+
+
     system("PAUSE");
     return 0;
 }
