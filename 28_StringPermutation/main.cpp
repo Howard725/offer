@@ -39,6 +39,23 @@ void Permutation( char* pStr ) {
     Permutation(pStr, pStr);
 }
 
+void Combination( char* pStr, int length, int n, char* result )
+{
+
+}
+
+void Combination( char* pStr )
+{
+    if ( NULL == pStr )
+        return;
+    int length = strlen( pStr );
+    char* result = new char[length];
+    memset( result, 0, length*sizeof(int) );
+    for ( int i = 1; i <= length; ++i )
+        Combination( pStr, pBegin, length, i, result );
+    delete [] result;
+}
+
 
 int main() {
     cout << "Hello, World!" << endl;
