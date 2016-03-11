@@ -70,10 +70,10 @@ void Combination( char* pStr )
         return;
     int length = strlen( pStr );
     char* result = new char[length+1];
-    memset( result, 0, length*sizeof(int) );
+    memset( result, 0, length*sizeof(char) );
     for ( int i = 1; i <= length; ++i )
         Combination( pStr, pStr, length, i, result, result );
-//    delete[] result;//该语句会报SIGTRAP，原因未知
+    delete[] result;
 }
 
 
