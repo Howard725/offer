@@ -12,9 +12,9 @@ void DicesProbability( int number )
         return;
 
     //初始化两个大小为number*maxValue的数组
-    int *arrays[2];
-    arrays[0] = new int[number * maxValue + 1];
-    arrays[1] = new int[number * maxValue + 1];
+    unsigned int *arrays[2];
+    arrays[0] = new unsigned int[number * maxValue + 1];
+    arrays[1] = new unsigned int[number * maxValue + 1];
     //初始化标志位flag，用于标记当前使用的数组
     int flag = 0;
     //初始化第一个骰子可能出现的点数的次数
