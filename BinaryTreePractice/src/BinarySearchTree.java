@@ -53,7 +53,7 @@ public class BinarySearchTree<T extends Comparable< ? super T > > {
         Stack< BinaryTreeNode<T> > stack = new Stack<>();
         BinaryTreeNode<T> current = root;
 
-        //当前节点为空并且堆栈为空时结束循环
+/*        //当前节点为空并且堆栈为空时结束循环
         while ( current != null || !stack.isEmpty() ) {
             //首先一直向左找到最左的节点
             if ( current.leftChild != null ) {
@@ -69,6 +69,15 @@ public class BinarySearchTree<T extends Comparable< ? super T > > {
                     System.out.print( current.element.toString() + '\t' );
                     current = current.rightChild;
                 }
+            }
+        }*/
+        while ( current != null ) {
+            stack.push( current );
+            current = current.leftChild;
+            while ( current == null && !stack.empty() ) {
+                current = stack.pop();
+                System.out.print( current.element.toString() + '\t' );
+                current = current.rightChild;
             }
         }
     }
